@@ -14,8 +14,11 @@ Credits
 =====
 
 This game built using javascript library:
-*Raphael.js - raphaeljs.com
-*jQuery.js  - jquery.com
-*tooltipster - calebjacob.com/tooltipster/
 
-Kanji list fetched from Wikipedia list of Jouyou Kanji. link: http://en.wikipedia.org/wiki/List_of_j%C5%8Dy%C5%8D_kanji
+Raphael.js - raphaeljs.com
+	
+jQuery.js  - jquery.com
+	
+tooltipster - calebjacob.com/tooltipster/
+
+Kanji list fetched from Wikipedia list of Jouyou Kanji.
