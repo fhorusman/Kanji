@@ -1,0 +1,371 @@
+/*
+@font-face {
+	font-family: 'MS Mincho';
+	src: url('fonts/MSMINCHO.TTF');
+}*/
+
+@font-face {
+	font-family: 'Letter Gothic Std';
+	src: url('fonts/LetterGothicStd.otf');
+}
+
+@font-face {
+	font-family: 'Monaco';
+	src: url('fonts/Monaco.ttf');
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Letter Gothic Std', 'Helvetica', 'Arial';
+}
+
+html {
+	background: #FFF url(images/noise.png);
+}
+
+big {
+	font-family: 'Monaco', 'Helvetica', 'Arial';
+	position: relative;
+	top: 3px;
+}
+
+img, a {border: none, outline: none;}
+
+a:hover {
+	color: LightBlue;
+}
+
+.boxed label:hover {
+	text-shadow: 0 0 1px #888;
+	cursor: pointer;
+}
+
+.boxed input {
+	cursor: pointer;
+}
+
+/* Loading Screen */
+
+#loadingscreen {
+	width: 1024px;
+	height: 600px;
+	background: rgba(100,100,100,0.7);
+	z-index: 10;
+	position: absolute;
+	top: 0px;
+	display: none;
+}
+
+#loadingmessage {
+	margin-top: 300px;
+	text-align: center;
+	height: 48px;
+	color: white;
+	background: url(images/loader.gif) no-repeat center;
+	font: 12px 'Monaco';
+}
+
+/* Container */
+
+#gamewarning {
+	height: 600px;
+	width: 1024px;
+	background-image: url('images/128-174.jpg');
+	border-radius: 0 0 10px 10px;
+	text-align: center;
+	margin: auto;
+	clear: both;
+	position: relative;
+}
+#gamecontainer {
+	height: 600px;
+	width: 1024px;
+	background-image: url('images/128-174.jpg');
+	border-radius: 0 0 10px 10px;
+	text-align: center;
+	margin: auto;
+	clear: both;
+	position: relative;
+}
+
+#leftmenu {
+	float:left;
+	width: 220px;
+	margin: 10px 0 0 10px;
+/*	max-height: 500px;*/
+}
+
+#leftmenu .gradediv {
+	margin: 1px;
+	position: relative;
+	border-bottom: 1px dotted #AFAFAF;
+}
+
+#leftmenu .selectable {
+	cursor: pointer;
+}
+
+#leftmenu .selected {
+	cursor: pointer;
+	border-bottom: 0px dotted #AFAFAF;
+}
+
+#leftmenu .gradediv:hover {
+	border-radius:10px;
+	background: rgba(255,255,255,0.75);
+}
+
+#leftmenu .numkanjidiv {
+/*	position: absolute;*/
+/*	top: 0;*/
+/*	right: 0;*/
+	z-index: 5;
+/*	background: #fff;*/
+	margin-left: 20px;
+	border-bottom: 1px dotted #AFAFAF;
+}
+
+#leftmenu .showkanjipart {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 5;
+}
+
+#rightmenu {
+	float:right;
+	text-align: left;
+	width: 194px;
+	margin: 10px 10px 0 0;
+}
+#footer {
+	width: 1024px;
+	position: absolute;
+	bottom: 0px;
+	
+}
+
+#footer p {
+	font-size: 9pt;
+}
+
+#help, #gamemode {
+	margin-top: 10px;
+}
+
+#center {
+	width: 590px;
+	margin-top:10px;
+	float:left;
+	/*background-color: #565656;*/
+}
+
+#center .foreigncharacter {
+	font-family: 'MS Mincho', Arial;
+	/*font-family: 'Osaka';*/
+}
+
+#mark {
+	padding-top:160px;
+}
+
+#mark img{
+	margin-top:140px;
+	width:24px;
+	height:24px;
+	cursor:pointer;
+}
+
+#love img{
+	opacity: 0.5;
+}
+
+#love img:hover {
+	opacity: 1;
+}
+
+#kanji {
+	margin-top: 10px;
+	font-size:80pt;
+	text-align: center;
+	display: block;
+	color: #333;
+	text-shadow: 0 1px 0 #888, 0 -1px 0 #FFF;
+}
+
+#kana {
+	display: block;
+	font-size:20pt;
+}
+
+
+#answerform {
+	padding-bottom: 150px;
+}
+
+#answer::-webkit-input-placeholder { font-family: 'MS Mincho', Arial; }
+#answer::-moz-placeholder { font-family: 'MS Mincho', Arial; }
+#answer:-ms-input-placeholder { font-family: 'MS Mincho', Arial; }
+#answer:-moz-placeholder { font-family: 'MS Mincho', Arial; }
+
+.answerinput {
+	padding: 0 15px;
+	border-color: rgba(255,255,255,0.6);
+	border-style:dashed;
+	font-size: 20pt;
+	font-family: 'Arial';
+	border-radius: 20px;
+	outline: none;
+	opacity: 0.75;
+}
+
+.answerinput:hover {
+	border-color: #C3C3C3;
+	opacity: 0.85;
+}
+
+.answerinput:focus {
+	border-style: solid;
+	border-color: #C3C3C3;
+	/*border-color: #565656;*/
+	opacity: 0.95;
+}
+
+.icon {
+	width: 42px;
+	height: 32px;
+	float:left;
+	clear: both;
+}
+
+#grademode {
+	text-align: left;
+	z-index:2;
+	overflow: scroll;
+	overflow-x: auto;
+	overflow-y: auto;
+	max-height: 475px;
+}
+
+#grademode label {
+	padding-left: 10px;
+}
+
+.boxed {
+	border: 1px dashed black;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: rgba(255,255,255,0.7);
+}
+
+.background {
+	background-image: url('images/128-125.jpg');
+	opacity: 0.75;
+	position:absolute;
+	top: 0;
+	left: 0;
+	width: 1024px;
+	height: 600px;
+	z-index: -1;
+	border-radius: 0 0 10px 10px;
+}
+
+#statistics {
+	display: none;
+	top: 0px;
+	width: 1024px;
+	height: 600px;
+	position: absolute;
+	z-index: 10;
+}
+
+#statistics a {
+	padding: 20px;
+	margin: auto;
+	width: 60px;
+	display: block;
+	color: #FFFFFF;
+	z-index: 10;
+}
+
+#statistics p {
+	color: white;
+	font-size: 22pt;
+	font-family: 'Monaco', Arial;
+	display: block;
+}
+
+#howtoplay {
+	display: none;
+	top: 0px;
+	width: 1024px;
+	height: 600px;
+	position: absolute;
+	z-index: 10;
+}
+
+#howtoplay a {
+	padding: 20px;
+	margin: auto;
+	width: 60px;
+	display: block;
+	color: #FFFFFF;
+	z-index: 10;
+}
+
+#howtoplay p {
+	color: white;
+	font-size: 22pt;
+	font-family: 'Monaco', Arial;
+	display: block;
+}
+
+#explanation {
+	height: 400px;
+	overflow: scroll;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+#explanation p {
+	color: white;
+	font-size: 11pt;
+	font-family: 'Letter Gothic Std', Arial;
+	text-align: left;
+	display: block;
+	padding: 0 20px;
+}
+
+#explanation strong {
+	color: cyan;
+	font-weight: 1000;
+	font-size:12pt;
+	text-shadow: 0 0 1px #fff;
+}
+
+#holder {
+	width: 1024px;
+	overflow: scroll;
+	overflow-x: auto;
+	overflow-y: auto;
+	position:absolute;
+	bottom: 0;
+}
+
+#container {
+  -webkit-transition: all 0.3s ease-out; 
+     -moz-transition: all 0.3s ease-out; 
+      -ms-transition: all 0.3s ease-out; 
+       -o-transition: all 0.3s ease-out; 
+          transition: all 0.3s ease-out;
+}
+
+#svg-image-blur {
+	display:none;
+}
+
+.blurred { 
+	-webkit-filter: blur(2px); 
+	filter: url(#blur-effect-1); 
+}

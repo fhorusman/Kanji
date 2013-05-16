@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Kanji Wars</title>
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="tooltipster.css" type="text/css" media="screen" charset="utf-8">
+	
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.tooltipster.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/raphael-min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/g.raphael-min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/g.bar-min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/kanji.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/game.js" type="text/javascript" charset="utf-8"></script>
+	
+	<!-- Date: 2013-02-27 -->
+</head>
+<body onload="init();">
+	<div id="gamewarning">
+		<big>If you don't have MS Mincho (True Type) font, please download and install it to improve loading speed</big>
+	</div>
+	<div id="gamecontainer" style="display:none;">
+		<div id="container">
+			<div id="leftmenu">
+				<div id="grade" class="boxed">
+					<div class="header">
+						<div id="gradeicon" class='icon'></div>
+						<big>Choose Grade</big><br><br>
+						<div id="grademode"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="center">
+				<span id="mark"></span>
+				<span id="kanji" class="foreigncharacter"></span><br><br>
+				<span id="kana" class="foreigncharacter"></span><br>
+				<span id="meaning"></span><br><br>
+				<form id="answerform">
+					<input type="text" id="answer" name="answer" class="answerinput" placeholder="Romaji ..." autocomplete="off">
+					<!--input type="button" onclick="saveDailyProgress();" value="Save"-->
+				</form>
+			</div>
+			<div id="rightmenu">
+				<div id="score" class="boxed">
+					<div class="header">
+						<div id="scoreicon" class='icon'></div>
+						<big>Score</big><br><br>
+					</div>
+					<span id="correct"></span><br>
+					<span id="error"></span>
+				</div>
+				<div id="gamemode" class="boxed">
+					<div class="header">
+						<div id="ideaicon" class='icon'></div>
+						<big>Game Mode</big><br><br>
+					</div>
+					<input type="radio" id="normalanswer" name="answertype" value="normal" checked="true" onclick="setMode(this.value)">
+					<label for="normalanswer">Normal</label><br>
+					<input type="radio" id="fullanswer" name="answertype" value="fullanswer" onclick="setMode(this.value)">
+					<label for="fullanswer">Full Answer</label><br><br>
+					<!--input type="radio" id="markedonly" name="kanjichoice" value="markedonly" onclick="setKanjiChoice(this.value)">
+					<label for="markedonly">Starred Only</label><br>
+					<input type="radio" id="unmarkedonly" name="kanjichoice" value="unmarkedonly" onclick="setKanjiChoice(this.value)">
+					<label for="unmarkedonly">Unstarred Only</label><br>
+					<input type="radio" id="both" name="kanjichoice" value="both" checked="true" onclick="setKanjiChoice(this.value)">
+					<label for="both">Both</label><br><br-->
+					<a id="clearmark" href="#">Clear Starred</a>
+				</div>
+				<div id="help" class="boxed">
+					<div class="header">
+						<div id="helpicon" class='icon'></div>
+						<big>Help</big><br><br>
+					</div>
+					<input type="checkbox" id="character" name="character" value="character">
+					<label for="character">Kana</label><br>
+					<input type="checkbox" id="translation" name="translation" value="translation">
+					<label for="translation">Translation</label><br><br>
+					<a id="showstatistic" href="#">Statistic</a><br>
+					<a id="showhowtoplay" href="#">How To Play</a>
+				</div>
+			</div>
+			
+			<div id="footer">
+				<p>©2013 Felix Horusman. Error? Bug? Suggestion? Send message to me <a href="https://twitter.com/fhorusman">@fhorusman</a></p>
+			</div>
+		</div>
+		
+		<div id="statistics" class="gamelayer">
+			<div class="background"></div>
+			<a onclick="hideStatistics();" href="#">Close</a>
+			<p>Game Statistics</p>
+			<div id="holder"></div>
+		</div>
+		
+		<div id="howtoplay" class="gamelayer">
+			<div class="background"></div>
+			<a onclick="hideHowToPlay();" href="#">Close</a>
+			<p>How To Play</p>
+			<div id="explanation">
+				<p>This game's objective is to train you reading Kanji using Romaji.</p>
+				<p>On the <strong>Choose Grade</strong> menu, you can choose more than one grades of Kanji or Kana that you want to appear at the game.</p>
+				<p>At the center, the game displayed a Kanji selected at random by using which grades of Kanji you've selected. To solve the Kanji, you entered the Romaji by using the input form below it and press enter to submit.</p>
+				<p>You can inserts <strong>more than one answers</strong>. To do that, you just need to entered a ',' (comma) as the separator between your answers (Eg: ichi,itsu,hito,hitotsu) before submitting. You'll gain more scores by answering this way. But you gain nothing if one of the answers is incorrect.</p>
+				<p>If you chose the <strong>Full Answer</strong> mode, you must entered <strong>all the possible way</strong> the Kanji could be read. Miss one, and your answer would be defined as incorrect. Also, you gained or lost <strong>double</strong> the score than normal mode.</p>
+				<p>Using the Help menu at the right box would display some assistances.</p>
+				<p>The <strong>Statistic</strong> link would show the graphical statistic of your game score from the first time you played the game. It would help in illustrating how many times have you played this game.</p>
+				<p>You can click the star at the top of the Kanji if you've mastered it. That Kanji would appears less frequently.</p>
+				<p>Have fun learning! I encourage you to challenge yourself everyday!</p>
+			</div>
+		</div>
+		
+		<div id="loadingscreen" class="gamelayer">
+			<div id="loadingmessage"></div>
+		</div>
+		
+		
+		<svg id="svg-image-blur">
+		    <filter id="blur-effect-1">
+		        <feGaussianBlur stdDeviation="2" />
+		    </filter>
+		</svg>
+	</div>
+	
+</body>
+</html>
