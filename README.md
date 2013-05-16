@@ -10,7 +10,7 @@ To play the game, open the index.html on your browser. Allow to save on localSto
 
 Any suggestion or help to improve this game would be appreciated. Just send me message @fhorusman on twitter.
 
-Credits
+Acknowledgement
 =====
 
 This game built using javascript library:
